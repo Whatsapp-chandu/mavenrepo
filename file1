@@ -5,3 +5,4 @@ testing agent-1
 testing agent-2
 testing jenkins labels
 testing maven build by installing maven in jenkins master
+testing maven build by installing maven in jenkins slave
