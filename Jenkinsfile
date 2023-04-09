@@ -33,13 +33,13 @@ pipeline {
         steps {
            sh ' mvn deploy '
         }
-      }    //aritifact upload stage completes here
+      }    //aritifact upload to nexus repo completed here
 
       stage ('deploy artifact') {
         steps {
            sh ' scp /root/workspace/whatsapp/chaatting/build/sample-dev/target/studentapp-2.1.1-FEAT01-SNAPSHOT.war root@172.31.6.35:/opt/apache-tomcat-10.0.23/webapps '
         }
-      }    //aritifact upload stage completes here    
+      }    //install artifact on tomcat    
 
 
 
