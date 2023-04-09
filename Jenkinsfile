@@ -25,7 +25,10 @@ pipeline {
 
       stage ('code quality') {
         steps {
+           withSonarQubeEnv(credentialsId: 'sonar-jenkins-tokens',installationName: sonar-server) {
+    // some block
            sh ' mvn sonar:sonar '
+            }
         }
       }    //sonar stage completes here
 
@@ -33,13 +36,13 @@ pipeline {
         steps {
            sh ' mvn deploy '
         }
-      }    //aritifact upload to nexus repo completed here
+      }    //aritifact upload stage completes here
 
       stage ('deploy artifact') {
         steps {
            sh ' scp /root/workspace/whatsapp/chaatting/build/sample-dev/target/studentapp-2.1.1-FEAT01-SNAPSHOT.war root@172.31.6.35:/opt/apache-tomcat-10.0.23/webapps '
         }
-      }    //install artifact on tomcat    
+      }    //aritifact upload stage completes here    
 
 
 
